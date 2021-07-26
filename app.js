@@ -21,8 +21,8 @@ app.use(bodyParser.urlencoded({
 
 // Configure MailChimp Settings
 mailchimp.setConfig({
-    apiKey: "2b2083797181d748ad01b77bb655f011-us6",
-    server: 'us6'
+    apiKey: "{apiKey}",
+    server: '{srv}'
 });
 
 
@@ -35,7 +35,7 @@ app.post("/", (req, res) => {
     const lastName = req.body.lastName;
     const email = req.body.email;
 
-    const listID = "b4eeeeafce";
+    const listID = "{list-id}";
 
     // Declares a function to be used later. It will be used to send info to MailChimp
     async function run() {
@@ -63,6 +63,6 @@ app.post("/", (req, res) => {
 
 });
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
     console.log("Server is running on port " + port);
 });
